@@ -29,13 +29,13 @@ void main()
   { 
    printf("%d error found at \n",c);
   }
- if(rec[7-0]==0)
+ if(rec[7-c]==0)
   {
-   rec[7-0]=1;
+   rec[7-c]=1;
   }
  else
   {
-   rec[7-0]=0;
+   rec[7-c]=0;
   }
   //printf("after solving the error data is \n");
   for(i=0;i<7;i++)
