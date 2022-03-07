@@ -1,51 +1,68 @@
 #include<stdio.h>
-int main(){
-	int top=-1,max,s[10],choice,ele,i;
-	printf("Enter the max of the stack (<10):\t");
-	scanf("%d",&max);
-	while(1)
-	{
-		printf("******************************************\n");
-		printf("********* MENU *********\n");
-		printf("1. Push \t 2. Pop \n3. Display \t 4. Exit\n Enter your choice:\t");
-		scanf("%d",&choice);
-	
-		switch(choice){
-		case 1:
-			if(top<max-1){
-				top++;
-				printf("Enter the element to Push:\t");
-				scanf("%d",&ele);
-				s[top]=ele;
-				printf("Element Pushed..\n");
-			}else{
-				printf("Stack Overflow!\n");
-			}
-			break;
-		case 2:
-			if(top!=-1){
-				ele=s[top];
-				top--;
-				printf("Top element %d poped..\n",ele);
-			}else{
-				printf("Too low elements to pop!\n");
-			}
-			break;
-		case 3:
-			if(top!=-1){
-				printf("The elements of the stack are:\n");
-				for(i=top;i>=0;i--)
-					printf("|\t%d\t|\n",s[i]);
-				printf("+---------------+\n");
-			}else{
-				printf("Too low elements to display!\n");
-			}
-			break;
-		case 4:
-			return 0;
-		default:
-			printf("Invalid input..\n");
-		}
-	}
-}		
-			
+#include<stdlib.h>
+#define size 100
+int stack[size],top=-1;
+void push(int[],int);
+void display(int[]);
+void pop(int[]);
+void push(int stack[],int item)
+{
+  if(top == size-1)
+  {
+printf("Stack is full\n");
+    return;
+  }
+  top++;
+  stack[top]=item;
+}
+void pop(int stack[])
+{
+  int ditem;
+if(top==-1)
+{
+printf("Stack is empty\n");
+}
+ditem=stack[top];
+  top--;
+  printf("Item is deleted"" %d",ditem);
+}
+void display(int stack[])
+{
+  int i;
+   if(top==-1)
+   {
+    printf("Stack is empty");
+     return;
+   }
+  printf("Stack elements are: ");
+  for(i=top;i>=0;i--)
+  {
+    printf(" %d",stack[i]);
+}
+}
+void main()
+{
+  int ch,item;
+  while(1)
+  {
+  printf("\n1.Push\n2.Pop\n3.Display\n4.Exit\n");
+  printf("Enter your choice\n");
+  scanf(" %d",&ch);
+    switch(ch)
+    {
+      case 1: printf("Enter the element to be inserted\n");
+              scanf(" %d",&item);
+                     push(stack,item);
+                     printf("Item is inserted");
+                     break;
+                     case 2:pop(stack);
+                     break;
+                     case 3:display(stack);
+                     break;
+                     case 4:exit(0);
+                     break;
+                     default:printf("Wrong Choice\n");
+                     break;
+     }
+  }
+}
