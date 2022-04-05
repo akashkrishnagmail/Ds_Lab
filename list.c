@@ -49,7 +49,7 @@ void deletBegin()
     if(First==NULL)
      {
       printf("!! E mpt Y !!");
-      exit(0);
+      return(0);
      }
 else{
   temp=First;
@@ -63,11 +63,17 @@ void deletEnd()
  if(First==NULL)
      {
       printf("!! E mpt Y !!");
-      exit(0);
+      return(0);
      }
+temp=First;
+if(First->link==NULL)
+{
+ First=NULL;
+free(temp);
+}
 else
 {
- temp=prev=First;
+ prev=First;
 while(temp->link!=NULL)
 { 
  prev=temp;
@@ -84,7 +90,7 @@ temp=First;
 if(First==NULL)
 {
  printf("E mpt Y");
-exit(0);
+return(0);
 }
 else if(First->data==ele)
 {
